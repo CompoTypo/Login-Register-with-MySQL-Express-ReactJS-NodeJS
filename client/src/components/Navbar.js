@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import logo from "./../logo.png";
 
 class Landing extends Component {
   logOut(e) {
-    e.preventDefault()
-    localStorage.removeItem('usertoken')
-    this.props.history.push(`/`)
+    e.preventDefault();
+    localStorage.removeItem("usertoken");
+    this.props.history.push(`/`);
   }
 
   render() {
@@ -22,7 +23,7 @@ class Landing extends Component {
           </Link>
         </li>
       </ul>
-    )
+    );
 
     const userLink = (
       <ul className="navbar-nav">
@@ -37,10 +38,14 @@ class Landing extends Component {
           </a>
         </li>
       </ul>
-    )
+    );
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+      <nav
+        className="navbar navbar-expand-lg navbar-dark bg-dark rounded"
+        style={{ height: "70px" }}
+      >
+        <img src={logo} alt="logo" style={{ height: "inherit" }}></img>
         <button
           className="navbar-toggler"
           type="button"
@@ -57,18 +62,18 @@ class Landing extends Component {
           className="collapse navbar-collapse justify-content-md-center"
           id="navbarsExample10"
         >
-          <ul className="navbar-nav">
+          <ul className="navbar-nav" style={{ float: "left" }}>
             <li className="nav-item">
               <Link to="/" className="nav-link">
-                Home
+                Main functions list
               </Link>
             </li>
           </ul>
-          {localStorage.usertoken ? userLink : loginRegLink}
         </div>
+        {localStorage.usertoken ? userLink : loginRegLink}
       </nav>
-    )
+    );
   }
 }
 
-export default withRouter(Landing)
+export default withRouter(Landing);
